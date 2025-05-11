@@ -7,10 +7,16 @@ class DbSetup:
         self._create_user_table()
 
     def _create_recurring_order_table(self):
-        RecurringOrder.create_table()
+        try:
+            RecurringOrder.create_table()
+        except Exception:
+            pass
 
     def _create_user_table(self):
-        User.create_table()
+        try:
+            User.create_table()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":

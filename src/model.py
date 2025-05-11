@@ -1,10 +1,11 @@
-import os
-from abc import abstractmethod
-from dyntastic import Dyntastic
+from decimal import Decimal
 from pydantic import BaseModel, Field
 from typing import Optional
+import os
+from dyntastic import Dyntastic
 
 
+# Base Model for DynamoDB
 class DynamoDbModelBase(Dyntastic):
     __table_region__ = os.environ.get("AWS_REGION")
     __table_host__ = os.environ.get("DYNAMO_ENDPOINT")
@@ -12,33 +13,28 @@ class DynamoDbModelBase(Dyntastic):
     __range_key__ = "range_key"
 
     @property
-    @abstractmethod
-    def __table_name__(self):  # over-ride this on each implementing class
-        pass
+    def __table_name__(self):
+        raise NotImplementedError
 
     hash_key: str = Field(default=None, title="DynamoDB Partition Key")
     range_key: str = Field(default=None, title="DynamoDB Sort Key")
 
 
-"""TODO
-Architect a data structure for storing user's recurring orders. Two tables have already been setup for you,
-User and RecurringOrder. It is up to you how you want to structure the data, so feel free to use both tables
-or only one based on your strategy.
-
-Don't forget to checkout the full requirements in the README or in api.py as those will pertain relevant information that
-will apply to this file.
-"""
-
-
+# User Info Model
 class UserInfo(BaseModel):
     first_name: str
     last_name: str
 
 
+# User Model
 class User(DynamoDbModelBase):
     __table_name__ = "User"
     info: Optional[UserInfo]
 
 
+# Recurring Order Model
 class RecurringOrder(DynamoDbModelBase):
     __table_name__ = "RecurringOrder"
+    crypto: str
+    frequency: str
+    amount: Decimal
