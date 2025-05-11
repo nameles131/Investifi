@@ -1,7 +1,3 @@
-# Coding Challenge Readme
-
-Welcome to the Investifi Backend Engineering coding challenge! This challenge is designed to assess your coding skills, problem-solving abilities, and "grit". Before you begin, please take a moment to read through this readme to understand the challenge requirements, instructions, and guidelines.
-
 ## Challenge Description
 
 Investifi challange completed by adding 3 routes. First route /recurring-orders which will return all recurring orders for a given user, the second is /users which will return all available users on the users db. The last is /recurring-orders which is a POST route to submit a recurring order for a given user. I used the method associated with the route users to check if the user exists already or not. Optimized the code for better readability. the recurring-orders post route will have the validation before submitting any new recurring for the user. It will validate if the order is coming with a valid amount, it will also check if the request submitted for ETH/BTC only and the recurring type is Daily/Bi-Monthly only, and will validate as well if there are no recurring like that in the DB before it save the request
