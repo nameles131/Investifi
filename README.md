@@ -38,7 +38,7 @@ Inserted into the DB the below users in the users table.
   }
 }
 
-# ===================== VALID POST REQUESTS =====================
+### ===================== VALID POST REQUESTS =====================
 curl -X POST "http://127.0.0.1:8000/recurring-orders" \
      -H "Content-Type: application/json" \
      -d '{"user_id": "1", "crypto": "BTC", "frequency": "Daily", "amount": 100}'
@@ -55,7 +55,7 @@ curl -X POST "http://127.0.0.1:8000/recurring-orders" \
     -H "Content-Type: application/json" \
     -d '{"user_id": "1", "crypto": "ETH", "frequency": "Bi-Monthly", "amount": 100}'
 
-# ===================== INVALID POST REQUESTS =====================
+### ===================== INVALID POST REQUESTS =====================
  curl -X POST "http://127.0.0.1:8000/recurring-orders" \
       -H "Content-Type: application/json" \
       -d '{"user_id": "1", "crypto": "ADA", "frequency": "Daily", "amount": 100}'
@@ -64,7 +64,7 @@ curl -X POST "http://127.0.0.1:8000/recurring-orders" \
      -H "Content-Type: application/json" \
      -d '{"user_id": "1", "crypto": "BTC", "frequency": "Yearly", "amount": 100}'
 
-# ===================== OTHER ROUTES =====================
-# GET REQUESTS
+### ===================== OTHER ROUTES =====================
+### GET REQUESTS
 curl "http://127.0.0.1:8000/users?user_id=2"
 curl "http://127.0.0.1:8000/recurring-orders?user_id=1"
