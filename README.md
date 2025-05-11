@@ -69,5 +69,7 @@ curl -X POST "http://127.0.0.1:8000/recurring-orders" \
 ===================== OTHER ROUTES =====================
 
 -- GET REQUESTS
+
 curl "http://127.0.0.1:8000/users?user_id=2"
+
 curl "http://127.0.0.1:8000/recurring-orders?user_id=1"
